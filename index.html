@@ -30,26 +30,49 @@
             margin-bottom: 15px;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
-        .contest-solutions {
-            font-size: 14.5px;
-            a:link { color: #6f6fff; text-decoration: none !important; }
-            a:visited { color: #6f6fff; text-decoration: none !important; }
-            a:hover { color: #6f6fff; text-decoration: none !important; }
-            a:active { color: #6f6fff; text-decoration: none !important; }
+        
+        /* 更小更扁的链接样式 */
+        p > strong > a {
+            display: inline-block;
+            padding: 4px 12px; /* 减小内边距 */
+            border-radius: 12px; /* 更扁的圆角 */
+            font-weight: bold;
+            font-size: 14.5px; /* 更小的字体 */
+            text-decoration: none !important;
+            color: white !important;
+            transition: all 0.2s ease;
+            margin: 3px 0;
+            line-height: 1.3;
         }
-        .single-solutions {
-            font-size: 14.5px;
-            a:link { color: #6f6fff; text-decoration: none !important; }
-            a:visited { color: #6f6fff; text-decoration: none !important; }
-            a:hover { color: #6f6fff; text-decoration: none !important; }
-            a:active { color: #6f6fff; text-decoration: none !important; }
+        
+        /* 第一组：绿色 */
+        .contest-solutions p > strong > a {
+            background-color: #4CAF50;
+            box-shadow: 0 2px 4px rgba(76, 175, 80, 0.2);
         }
-        .useful-links {
-            font-size: 14.5px;
-            a:link { color: #6f6fff; text-decoration: none !important; }
-            a:visited { color: #6f6fff; text-decoration: none !important; }
-            a:hover { color: #6f6fff; text-decoration: none !important; }
-            a:active { color: #6f6fff; text-decoration: none !important; }
+        .contest-solutions p > strong > a:hover {
+            background-color: #3e8e41;
+            transform: translateY(-1px);
+        }
+        
+        /* 第二组：蓝色 */
+        .single-solutions p > strong > a {
+            background-color: #2196F3;
+            box-shadow: 0 2px 4px rgba(33, 150, 243, 0.2);
+        }
+        .single-solutions p > strong > a:hover {
+            background-color: #0b7dda;
+            transform: translateY(-1px);
+        }
+        
+        /* 第三组：红色 */
+        .useful-links p > strong > a {
+            background-color: #f44336;
+            box-shadow: 0 2px 4px rgba(244, 67, 54, 0.2);
+        }
+        .useful-links p > strong > a:hover {
+            background-color: #d32f2f;
+            transform: translateY(-1px);
         }
     </style>
 </head>
@@ -82,10 +105,10 @@
         · <strong><a href="https://www.luogu.com.cn/user/378467">My Luogu Account</a></strong>
     </p>
     <p>
-        · <strong><a href="https://www.atcoder.jp/users/Floweryhb">My AtCoder Account</a></strong>
+        · <strong><a href="https://atcoder.jp/users/Floweryhb">My AtCoder Account</a></strong>
     </p>
     <p>
-        · <strong><a href="https://www.codeforces.com/profile/SYCu">My CodeForces Account</a></strong>
+        · <strong><a href="https://codeforces.com/profile/SYCu">My CodeForces Account</a></strong>
     </p>
     <p>
         · <strong><a href="https://www.codechef.com/users/acat00">My CodeChef Account</a></strong>
