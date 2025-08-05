@@ -36,25 +36,14 @@
 <div class="footer">
     Current Time：<span id="current-time"></span>
 </div>
-  <body>
-    <!-- 页面内容 -->
-    <div style="padding-bottom: 50px;">
-        <!-- 这里放置你的页面内容 -->
-        <p>这里是页面内容...</p>
-    </div>
-    
-    <!-- 底部时间显示 -->
     <div class="time-footer" id="current-time">
-        <!-- JavaScript会在这里显示时间 -->
     </div>
 
     <script>
-        // 更新时间的函数
         function updateTime() {
             const now = new Date();
             const timeElement = document.getElementById('current-time');
             
-            // 格式化时间，例如：2023年10月15日 14:30:45
             const formattedTime = now.toLocaleString('zh-CN', {
                 year: 'numeric',
                 month: '2-digit',
@@ -65,7 +54,7 @@
                 hour12: false
             }).replace(/\//g, '年').replace(/\//g, '月') + '日';
             
-            timeElement.textContent = '当前时间: ' + formattedTime;
+            timeElement.textContent = 'Current Time: ' + formattedTime;
         }
 
         // 页面加载时立即更新时间
