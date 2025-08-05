@@ -83,6 +83,9 @@
     <p>
         · <strong><a href="https://self-adjusting-top-tree.github.io/posts/AtCoder/solution-ABC416.html">AtCoder Beginner Contest 416 题解（A~G）</a></strong>
     </p>
+    <p>
+        · <strong><a href="https://self-adjusting-top-tree.github.io/posts/CodeForces/solution-CFR1040.html">CodeForces Round 1040(Div. 1) 题解（A~C3）</a></strong>
+    </p>
 </div>
 
 <hr>
@@ -124,14 +127,24 @@
 <hr>
 
 <div class="image">
-    <!--
     <img src="https://www.creation-hy.com/api/ai-art-works/1/7003973e-9e93-11ef-9091-e4c7677cb1da.webp" alt="AI generated artwork">
-    -->
 </div>
 
 <div class="footer" id="current-time">
     
 </div>
+
+<p id="hitokoto_text"><font face=楷体>:D 获取今日一言中...</font></p>
+<p id="hitokoto_from"><font face=楷体>from</font></p>
+<script>
+    fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+        hitokoto_text.innerText = data.hitokoto
+        hitokoto_from.innerText = data.from
+    })
+    .catch(console.error)
+</script>
 
 <script>
     const colors = [
@@ -162,5 +175,6 @@
     setInterval(updateTime, 1000);
     document.body.style.backgroundColor = colors[currentColorIndex];
 </script>
+
 </body>
 </html>
