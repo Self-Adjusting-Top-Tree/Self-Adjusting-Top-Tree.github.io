@@ -6,11 +6,12 @@
     <title>ttq012's blog</title>
     <style>
         body {
-            background-color: lightgreen;
+            background-color: #e8f5e9; /* 更浅的绿色 */
             font-family: Arial, sans-serif;
             margin: 20px;
+            transition: background-color 0.5s ease; /* 添加颜色过渡效果 */
         }
-        .contest-solutions, .single-solutions {
+        .contest-solutions, .single-solutions, .useful-links {
             margin-bottom: 20px;
         }
         .image {
@@ -24,7 +25,7 @@
         }
     </style>
 </head>
-<body>
+<body onclick="changeBackgroundColor()">
 
 <div class="contest-solutions">
     <h3>Contest Solutions:</h3>
@@ -54,9 +55,6 @@
     </p>
 </div>
 
-    
-
-
 <hr>
 
 <div class="image">
@@ -70,6 +68,23 @@
 </div>
 
 <script>
+    // 颜色数组 - 使用十六进制颜色代码
+    const colors = [
+        '#e8f5e9', // 浅绿色
+        '#fff9c4', // 浅黄色
+        '#ffebee', // 浅粉色
+        '#e3f2fd', // 浅蓝色
+        '#f5f5f5'  // 浅银白色
+    ];
+    let currentColorIndex = 0;
+
+    // 切换背景色函数
+    function changeBackgroundColor() {
+        currentColorIndex = (currentColorIndex + 1) % colors.length;
+        document.body.style.backgroundColor = colors[currentColorIndex];
+    }
+
+    // 时间更新函数
     function updateTime() {
         const now = new Date();
         const timeElement = document.getElementById('current-time');
@@ -82,8 +97,11 @@
         const formattedTime = `Current Time: ${year}年${month}月${day}日 ${hours}:${minutes}:${seconds}`;
         timeElement.textContent = formattedTime;
     }
+    
+    // 初始化时间和背景色
     updateTime();
     setInterval(updateTime, 1000);
+    document.body.style.backgroundColor = colors[currentColorIndex];
 </script>
 </body>
 </html>
