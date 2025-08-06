@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,174 +8,215 @@
     <style>
         body {
             background-color: #e8f5e9;
-            font-family: Consolas, Arial, sans-serif;
+            font-family: Maple Mono, Consolas, Arial, sans-serif;
             font-size: 17px;
             margin: 20px;
+            min-height: 100vh;
+            /* display: flex; */
             transition: background-color 0.5s ease;
         }
-        .contest-solutions, .single-solutions, .useful-links {
+
+        .contest-solutions,
+        .single-solutions,
+        .useful-links {
             margin-bottom: 20px;
         }
+
         .image {
             text-align: center;
             margin: 20px 0;
         }
+
         .footer {
             margin-top: 20px;
             text-align: center;
             font-weight: bold;
+            font-family: 苍耳云黑, 楷体, 仿宋, Consolas, Ubuntu mono;
         }
+
         h3 {
             font-size: 1.8rem;
             color: #614390;
             margin-bottom: 15px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
-        
-        /* 更小更扁的链接样式 */
-        p > strong > a {
+
+        p>strong>a {
             display: inline-block;
-            padding: 4px 12px; /* 减小内边距 */
-            border-radius: 12px; /* 更扁的圆角 */
+            padding: 4px 12px;
+            border-radius: 12px;
             font-weight: bold;
-            font-size: 14.5px; /* 更小的字体 */
+            font-size: 14.5px;
             text-decoration: none !important;
             color: white !important;
             transition: all 0.2s ease;
             margin: 3px 0;
             line-height: 1.3;
         }
-        
-        /* 第一组：绿色 */
-        .contest-solutions p > strong > a {
+
+        .contest-solutions p>strong>a {
             background-color: #4CAF50;
             box-shadow: 0 2px 4px rgba(76, 175, 80, 0.2);
         }
-        .contest-solutions p > strong > a:hover {
+
+        .contest-solutions p>strong>a:hover {
             background-color: #3e8e41;
             transform: translateY(-1px);
         }
-        
-        /* 第二组：蓝色 */
-        .single-solutions p > strong > a {
+
+        .single-solutions p>strong>a {
             background-color: #2196F3;
             box-shadow: 0 2px 4px rgba(33, 150, 243, 0.2);
         }
-        .single-solutions p > strong > a:hover {
+
+        .single-solutions p>strong>a:hover {
             background-color: #0b7dda;
             transform: translateY(-1px);
         }
-        
-        /* 第三组：红色 */
-        .useful-links p > strong > a {
+
+        .useful-links p>strong>a {
             background-color: #f44336;
             box-shadow: 0 2px 4px rgba(244, 67, 54, 0.2);
         }
-        .useful-links p > strong > a:hover {
+
+        .useful-links p>strong>a:hover {
             background-color: #d32f2f;
+            transform: translateY(-1px);
+        }
+
+        .yiyan p>strong>a {
+            background-color: #ff00b3;
+            box-shadow: 0 2px 4px rgba(82, 116, 190, 0.2);
+        }
+
+        .yiyan p>strong>a:hover {
+            background-color: #be0b0b;
             transform: translateY(-1px);
         }
     </style>
 </head>
-<body onclick="changeBackgroundColor()">
 
-<div class="contest-solutions">
-    <h3>Contest Solutions:</h3>
-    <p>
-        · <strong><a href="https://self-adjusting-top-tree.github.io/posts/AtCoder/solution-ABC416.html">AtCoder Beginner Contest 416 题解（A~G）</a></strong>
-    </p>
-    <p>
-        · <strong><a href="https://self-adjusting-top-tree.github.io/posts/CodeForces/solution-CFR1040.html">CodeForces Round 1040(Div. 1) 题解（A~C3）</a></strong>
-    </p>
-</div>
+<body onclick="ChangeColor()">
 
-<hr>
+    <div class="contest-solutions">
+        <h3>Contest Solutions:</h3>
+        <p>
+            · <strong><a href="https://self-adjusting-top-tree.github.io/posts/AtCoder/solution-ABC416.html">AtCoder
+                    Beginner Contest 416 题解（A~G）</a></strong>
+        </p>
+        <p>
+            · <strong><a
+                    href="https://self-adjusting-top-tree.github.io/posts/CodeForces/solution-CFR1040.html">CodeForces
+                    Round 1040(Div. 1) 题解（A~C3）</a></strong>
+        </p>
+    </div>
 
-<div class="single-solutions">
-    <h3>单题题解</h3>
-    <p>
-        · <strong><a href="https://self-adjusting-top-tree.github.io/posts/Problem/Solutions/CF1628%20D1D2.html">CF1628 D1/D2 题解：dp, counting, *2100 / *2400，考虑组合意义</a></strong>
-    </p>
-    <p>
-        · <strong><a href="https://self-adjusting-top-tree.github.io/posts/Problem/Solutions/P10778%20BZOJ3569%20DZY%20Loves%20Chinese%20II.pdf">P10778 BZOJ3569 DZY Loves Chinese II 题解, 求生成树套路 / 哈希 / 随机化</a></strong>
-    </p>
-</div>
+    <hr>
 
-<hr>
+    <div class="single-solutions">
+        <h3>单题题解</h3>
+        <p>
+            · <strong><a
+                    href="https://self-adjusting-top-tree.github.io/posts/Problem/Solutions/CF1628%20D1D2.html">CF1628
+                    D1/D2 题解：dp, counting, *2100 / *2400，考虑组合意义</a></strong>
+        </p>
+        <p>
+            · <strong><a
+                    href="https://self-adjusting-top-tree.github.io/posts/Problem/Solutions/P10778%20BZOJ3569%20DZY%20Loves%20Chinese%20II.pdf">P10778
+                    BZOJ3569 DZY Loves Chinese II 题解, 求生成树套路 / 哈希 / 随机化</a></strong>
+        </p>
+    </div>
 
-<div class="useful-links">
-    <h3>Useful Links:</h3>
-    <p>
-        · <strong><a href="https://www.luogu.com.cn/user/378467">My Luogu Account</a></strong>
-    </p>
-    <p>
-        · <strong><a href="https://atcoder.jp/users/Floweryhb">My AtCoder Account</a></strong>
-    </p>
-    <p>
-        · <strong><a href="https://codeforces.com/profile/SYCu">My CodeForces Account</a></strong>
-    </p>
-    <p>
-        · <strong><a href="https://www.codechef.com/users/acat00">My CodeChef Account</a></strong>
-    </p>
-    <p>
-        · <strong><a href="https://oi.wiki">OI Wiki</a></strong>
-    </p>
-    <p>
-        · <strong><a href="https://www.creation-hy.com/overdose">Overdose</a></strong>
-    </p>
-</div>
+    <hr>
 
-<hr>
+    <div class="useful-links">
+        <h3>Useful Links:</h3>
+        <p>
+            · <strong><a href="https://www.luogu.com.cn/user/378467">My Luogu Account</a></strong>
+        </p>
+        <p>
+            · <strong><a href="https://atcoder.jp/users/Floweryhb">My AtCoder Account</a></strong>
+        </p>
+        <p>
+            · <strong><a href="https://codeforces.com/profile/SYCu">My CodeForces Account</a></strong>
+        </p>
+        <p>
+            · <strong><a href="https://www.codechef.com/users/acat00">My CodeChef Account</a></strong>
+        </p>
+        <p>
+            · <strong><a href="https://oi.wiki">OI Wiki</a></strong>
+        </p>
+        <p>
+            · <strong><a href="https://www.geogebra.org/calculator">Geogebra</a></strong>
+        </p>
+        <p>
+            · <strong><a href="https://csacademy.com/app/graph_editor/">Graph Editor</a></strong>
+        </p>
+        <p>
+            · <strong><a href="https://www.creation-hy.com/overdose">Overdose</a></strong>
+        </p>
+    </div>
 
-<div class="image">
-    <img src="https://www.creation-hy.com/api/ai-art-works/1/7003973e-9e93-11ef-9091-e4c7677cb1da.webp" alt="AI generated artwork">
-</div>
+    <hr>
 
-<div class="footer" id="current-time">
-    
-</div>
+    <div class="image">
+        <img src="https://www.creation-hy.com/api/ai-art-works/1/7003973e-9e93-11ef-9091-e4c7677cb1da.webp"
+            alt="AI generated artwork">
+    </div>
 
-<p id="hitokoto_text"><font face=楷体>:D 获取今日一言中...</font></p>
-<p id="hitokoto_from"><font face=楷体>from</font></p>
-<script>
-    fetch('https://v1.hitokoto.cn')
-    .then(response => response.json())
-    .then(data => {
-        hitokoto_text.innerText = data.hitokoto
-        hitokoto_from.innerText = data.from
-    })
-    .catch(console.error)
-</script>
+    <div class="footer" id="current-time">
 
-<script>
-    const colors = [
-        '#e8f5e9', 
-        '#fff9c4', 
-        '#ffebee', 
-        '#e3f2fd', 
-        '#f5f5f5'  
-    ];
-    let currentColorIndex = 0;
-    function changeBackgroundColor() {
-        currentColorIndex = (currentColorIndex + 1) % colors.length;
-        document.body.style.backgroundColor = colors[currentColorIndex];
-    }
-    function updateTime() {
-        const now = new Date();
-        const timeElement = document.getElementById('current-time');
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        const formattedTime = `Current Time: ${year}年${month}月${day}日 ${hours}:${minutes}:${seconds}`;
-        timeElement.textContent = formattedTime;
-    }
-    updateTime();
-    setInterval(updateTime, 1000);
-    document.body.style.backgroundColor = colors[currentColorIndex];
-</script>
+    </div>
+
+    <div class="yiyan">
+        <p id="hitokoto_text">
+            <font face=苍耳云黑>:D 获取今日一言中...</font>
+        </p>
+        <p id="hitokoto_from">
+            <font face=苍耳云黑>from</font>
+        </p>
+    </div>
+
+    <script>
+        fetch('https://v1.hitokoto.cn')
+            .then(response => response.json())
+            .then(data => {
+                hitokoto_text.innerText = data.hitokoto
+                hitokoto_from.innerText = data.from
+            })
+            .catch(console.error)
+    </script>
+
+    <script>
+        const colors = [
+            '#e8f5e9',
+            '#fff9c4',
+            '#ffebee',
+            '#e3f2fd',
+            '#f5f5f5'
+        ];
+        let c_idx = 0;
+        function ChangeColor() {
+            c_idx = (c_idx + 1) % colors.length;
+            document.body.style.backgroundColor = colors[c_idx];
+        }
+        function Updtime() {
+            const now = new Date();
+            const tme = document.getElementById('current-time');
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const fmt = `Current Time: ${year}年${month}月${day}日 ${hours}:${minutes}:${seconds}`;
+            tme.textContent = fmt;
+        }
+        Updtime();
+        setInterval(Updtime, 1000);
+        document.body.style.backgroundColor = colors[c_idx];
+    </script>
 
 </body>
+
 </html>
