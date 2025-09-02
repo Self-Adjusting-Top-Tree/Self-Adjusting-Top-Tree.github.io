@@ -210,6 +210,97 @@
                 padding: 6px 12px;
             }
         }
+.contest-table {
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+.contest-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.contest-table th,
+.contest-table td {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.contest-table thead tr {
+    background-color: #614390;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.contest-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.contest-table tbody tr:nth-of-type(even) {
+    background-color: #f8f9fa;
+}
+
+.contest-table tbody tr:last-of-type {
+    border-bottom: 2px solid #614390;
+}
+
+.contest-table tbody tr:hover {
+    background-color: #f1f3f5;
+}
+
+.contest-table a {
+    color: #2196F3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contest-table a:hover {
+    text-decoration: underline;
+}
+
+.status-tag {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.upcoming .status-tag {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.ongoing .status-tag {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.ended .status-tag {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .contest-table table {
+        font-size: 14px;
+    }
+    
+    .contest-table th,
+    .contest-table td {
+        padding: 8px 10px;
+    }
+    
+    .status-tag {
+        font-size: 12px;
+    }
+}
     </style>
 </head>
 
@@ -233,80 +324,98 @@
 <hr>
 <p></p>
 
-        <p>
-<div style="text-align: center;"><font color=orange><font size=22><strong>即将开始：</strong></font></font>
-            <strong><a href="https://www.luogu.com.cn/contest/271704"><font size=6>CXOI Beginner Contest 015</font></a></strong> <font size=2> <font color=gray>开始时间：
-2025-09-06 10:00 | 结束时间：
-2025-09-15 01:00 | 报名人数：2 </font> </font> </div>
-        </p>
-
-<p>
-<div style="text-align: center;"><font color=blue><font size=22><strong>正在进行：</strong></font></font>
-            <strong><a href="https://www.luogu.com.cn/contest/272415"><font size=6>CXOI Beginner Contest 014</font></a></strong> <font size=2> <font color=gray>开始时间：
-2025-08-29 14:00 | 结束时间：
-2025-09-05 00:00 | 报名人数：57 </font> </font> </div>
-        </p>
-
-<p>
-
-<div style="text-align: center;"><font color=red><font size=22><strong>已经结束：</strong></font></font>
-            <strong><a href="https://www.luogu.com.cn/contest/263260"><font size=6>CXOI Round #4</font></a></strong> <font size=2> <font color=gray>开始时间：
-2025-08-02 10:00 | 结束时间：
-2025-08-07 10:00 | 报名人数：22 </font> </font> </div>
-        </p>
-
-<div style="text-align: center;"><font color=red><font size=22><strong>已经结束：</strong></font></font>
-            <strong><a href="https://www.luogu.com.cn/contest/258038"><font size=6>CXOI Beginner Contest 013</font></a></strong> <font size=2> <font color=gray>开始时间：
-2025-08-14 11:05 | 结束时间：
-2025-08-24 00:05 | 报名人数：21 </font> </font> </div>
-        </p>
-
-<p>
-<div style="text-align: center;"><font color=red><font size=22><strong>已经结束：</strong></font></font>
-            <strong><a href="https://www.luogu.com.cn/contest/257416"><font size=6>CXOI Beginner Contest 011</font></a></strong> <font size=2> <font color=gray>开始时间：
-2025-07-13 09:00 | 结束时间：
-2025-07-21 08:30 | 报名人数：23 </font> </font> </div>
-        </p>
-
-<p>
-<div style="text-align: center;"><font color=red><font size=22><strong>已经结束：</strong></font></font>
-            <strong><a href="https://www.luogu.com.cn/contest/250789"><font size=6>CXOI Beginner Contest 012</font></a></strong> <font size=2> <font color=gray>开始时间：
-2025-07-06 10:00 | 结束时间：
-2025-07-10 23:59 | 报名人数：17 </font> </font> </div>
-        </p>
-
-<p>
-<div style="text-align: center;"><font color=red><font size=22><strong>已经结束：</strong></font></font>
-            <strong><a href="https://www.luogu.com.cn/contest/233823"><font size=6>CXOI Furina Round #1</font></a></strong> <font size=2> <font color=gray>开始时间：
-2025-06-14 10:00 | 结束时间：
-2025-06-15 10:00 | 报名人数：18 </font> </font> </div>
-        </p>
-
-<div style="text-align: center;"><font color=red><font size=22><strong>已经结束：</strong></font></font>
-            <strong><a href="https://www.luogu.com.cn/contest/245260"><font size=6>CXOI Heuristic Contest 002</font></a></strong> <font size=2> <font color=gray>开始时间：
-2025-05-06 18:00 | 结束时间：
-2025-06-06 18:00 | 报名人数：35 </font> </font> </div>
-        </p>
-
-<p>
-<div style="text-align: center;"><font color=red><font size=22><strong>已经结束：</strong></font></font>
-            <strong><a href="https://www.luogu.com.cn/contest/228218"><font size=6>CXOI Regular Contest 001</font></a></strong> <font size=2> <font color=gray>开始时间：
-2025-01-30 18:00 | 结束时间：
-2025-02-08 18:00 | 报名人数：15 </font> </font> </div>
-        </p>
-
-<p>
-<div style="text-align: center;"><font color=red><font size=22><strong>已经结束：</strong></font></font>
-            <strong><a href="https://www.luogu.com.cn/contest/233823"><font size=6>CXOI Beginner Contest 010</font></a></strong> <font size=2> <font color=gray>开始时间：
-2025-01-30 18:00 | 结束时间：
-2025-02-08 18:00 | 报名人数：45 </font> </font> </div>
-        </p>
-
-<div style="text-align: center;"><font color=red><font size=22><strong>已经结束：</strong></font></font>
-            <strong><a href="https://www.luogu.com.cn/contest/213785"><font size=6>CXOI Beginner Contest 009</font></a></strong> <font size=2> <font color=gray>开始时间：
-2024-11-30 09:00 | 结束时间：
-2024-12-04 19:00 | 报名人数：43 </font> </font> </div>
-        </p>
+            <div class="contest-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>状态</th>
+                    <th>比赛名称</th>
+                    <th>开始时间</th>
+                    <th>结束时间</th>
+                    <th>报名人数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="upcoming">
+                    <td><span class="status-tag">即将开始</span></td>
+                    <td><a href="https://www.luogu.com.cn/contest/271704">CXOI Beginner Contest 015</a></td>
+                    <td>2025-09-06 10:00</td>
+                    <td>2025-09-15 01:00</td>
+                    <td>2</td>
+                </tr>
+                <tr class="ongoing">
+                    <td><span class="status-tag">正在进行</span></td>
+                    <td><a href="https://www.luogu.com.cn/contest/272415">CXOI Beginner Contest 014</a></td>
+                    <td>2025-08-29 14:00</td>
+                    <td>2025-09-05 00:00</td>
+                    <td>57</td>
+                </tr>
+                <tr class="ended">
+                    <td><span class="status-tag">已经结束</span></td>
+                    <td><a href="https://www.luogu.com.cn/contest/263260">CXOI Round #4</a></td>
+                    <td>2025-08-02 10:00</td>
+                    <td>2025-08-07 10:00</td>
+                    <td>22</td>
+                </tr>
+                <tr class="ended">
+                    <td><span class="status-tag">已经结束</span></td>
+                    <td><a href="https://www.luogu.com.cn/contest/258038">CXOI Beginner Contest 013</a></td>
+                    <td>2025-08-14 11:05</td>
+                    <td>2025-08-24 00:05</td>
+                    <td>21</td>
+                </tr>
+                <tr class="ended">
+                    <td><span class="status-tag">已经结束</span></td>
+                    <td><a href="https://www.luogu.com.cn/contest/257416">CXOI Beginner Contest 011</a></td>
+                    <td>2025-07-13 09:00</td>
+                    <td>2025-07-21 08:30</td>
+                    <td>23</td>
+                </tr>
+                <tr class="ended">
+                    <td><span class="status-tag">已经结束</span></td>
+                    <td><a href="https://www.luogu.com.cn/contest/250789">CXOI Beginner Contest 012</a></td>
+                    <td>2025-07-06 10:00</td>
+                    <td>2025-07-10 23:59</td>
+                    <td>17</td>
+                </tr>
+                <tr class="ended">
+                    <td><span class="status-tag">已经结束</span></td>
+                    <td><a href="https://www.luogu.com.cn/contest/233823">CXOI Furina Round #1</a></td>
+                    <td>2025-06-14 10:00</td>
+                    <td>2025-06-15 10:00</td>
+                    <td>18</td>
+                </tr>
+                <tr class="ended">
+                    <td><span class="status-tag">已经结束</span></td>
+                    <td><a href="https://www.luogu.com.cn/contest/245260">CXOI Heuristic Contest 002</a></td>
+                    <td>2025-05-06 18:00</td>
+                    <td>2025-06-06 18:00</td>
+                    <td>35</td>
+                </tr>
+                <tr class="ended">
+                    <td><span class="status-tag">已经结束</span></td>
+                    <td><a href="https://www.luogu.com.cn/contest/228218">CXOI Regular Contest 001</a></td>
+                    <td>2025-01-30 18:00</td>
+                    <td>2025-02-08 18:00</td>
+                    <td>15</td>
+                </tr>
+                <tr class="ended">
+                    <td><span class="status-tag">已经结束</span></td>
+                    <td><a href="https://www.luogu.com.cn/contest/233823">CXOI Beginner Contest 010</a></td>
+                    <td>2025-01-30 18:00</td>
+                    <td>2025-02-08 18:00</td>
+                    <td>45</td>
+                </tr>
+                <tr class="ended">
+                    <td><span class="status-tag">已经结束</span></td>
+                    <td><a href="https://www.luogu.com.cn/contest/213785">CXOI Beginner Contest 009</a></td>
+                    <td>2024-11-30 09:00</td>
+                    <td>2024-12-04 19:00</td>
+                    <td>43</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 	
     <div class="image">
         <img src="https://www.creation-hy.com/api/ai-art-works/1/7003973e-9e93-11ef-9091-e4c7677cb1da.webp"
