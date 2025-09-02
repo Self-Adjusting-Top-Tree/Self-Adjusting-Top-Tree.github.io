@@ -12,7 +12,6 @@
             font-size: 17px;
             margin: 20px;
             min-height: 100vh;
-            /* display: flex; */
             transition: background-color 0.5s ease;
         }
 
@@ -39,6 +38,107 @@
             color: #614390;
             margin-bottom: 15px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .CXOI {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .CXOI p {
+        margin: 0;
+        font-size: 24px;
+        color: #2c6b9e !important;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        white-space: nowrap;
+    }
+
+    .CXOI a {
+        color: #1e8449 !important;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 8px 16px;
+        border-radius: 8px;
+        background-color: #f0fff0;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        border: 2px solid #d5f5e3;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        white-space: nowrap;
+    }
+
+    ..CXOI {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .CXOI-header {
+            margin-bottom: 15px;
+        }
+
+        .CXOI-header p {
+            margin: 0;
+            font-size: 24px;
+            color: #2c6b9e !important;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .CXOI-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .CXOI a {
+            color: #1e8449 !important;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background-color: #f0fff0;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 2px solid #d5f5e3;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .CXOI a:hover {
+            background-color: #d0ffd0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .CXOI-links {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .CXOI a {
+                text-align: center;
+                width: 100%;
+                box-sizing: border-box;
+            }
         }
 
         p>strong>a {
@@ -93,10 +193,45 @@
             background-color: #be0b0b;
             transform: translateY(-1px);
         }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .CXOI {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .CXOI p {
+                font-size: 20px;
+            }
+            
+            .CXOI a {
+                font-size: 16px;
+                padding: 6px 12px;
+            }
+        }
     </style>
 </head>
 
 <body onclick="ChangeColor()">
+
+<div class="CXOI">
+<center>
+<p>CXOI Official</p>
+
+<hr><hr>
+
+<a href="https://self-adjusting-top-tree.github.io/CXOI/homepage.html">Home Page</a>
+<a href="https://self-adjusting-top-tree.github.io/CXOI/home.html">Contest List</a>
+<a href="https://self-adjusting-top-tree.github.io/CXOI/ranking.html">Ranking List</a>
+<a href="https://self-adjusting-top-tree.github.io/CXOI/contribution.html">Contribution List</a>
+</center>
+</div>
+
+<p></p>
+<p></p>
+<hr>
+<p></p>
 
         <p>
 <div style="text-align: center;"><font color=orange><font size=22><strong>即将开始：</strong></font></font>
