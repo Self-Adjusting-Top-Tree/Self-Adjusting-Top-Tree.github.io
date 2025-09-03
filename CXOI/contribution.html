@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CXOI Official Website</title>
+    <style>
+        body {
+            background-color: #e8f5e9;
+            font-family: Maple Mono, Consolas, Arial, sans-serif;
+            font-size: 17px;
+            margin: 20px;
+            min-height: 100vh;
+            transition: background-color 0.5s ease;
+        }
+
+        .contest-solutions,
+        .single-solutions,
+        .useful-links {
+            margin-bottom: 20px;
+        }
+
+        .image {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-family: 苍耳云黑, 楷体, 仿宋, Consolas, Ubuntu mono;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: #614390;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .CXOI {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .CXOI p {
+        margin: 0;
+        font-size: 24px;
+        color: #2c6b9e !important;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        white-space: nowrap;
+    }
+
+    .CXOI a {
+        color: #1e8449 !important;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 8px 16px;
+        border-radius: 8px;
+        background-color: #f0fff0;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        border: 2px solid #d5f5e3;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        white-space: nowrap;
+    }
+
+    ..CXOI {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .CXOI-header {
+            margin-bottom: 15px;
+        }
+
+        .CXOI-header p {
+            margin: 0;
+            font-size: 24px;
+            color: #2c6b9e !important;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .CXOI-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .CXOI a {
+            color: #1e8449 !important;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background-color: #f0fff0;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 2px solid #d5f5e3;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .CXOI a:hover {
+            background-color: #d0ffd0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .CXOI-links {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .CXOI a {
+                text-align: center;
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+
+        p>strong>a {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 14.5px;
+            text-decoration: none !important;
+            color: white !important;
+            transition: all 0.2s ease;
+            margin: 3px 0;
+            line-height: 1.3;
+        }
+
+        .contest-solutions p>strong>a {
+            background-color: #4CAF50;
+            box-shadow: 0 2px 4px rgba(76, 175, 80, 0.2);
+        }
+
+        .contest-solutions p>strong>a:hover {
+            background-color: #3e8e41;
+            transform: translateY(-1px);
+        }
+
+        .single-solutions p>strong>a {
+            background-color: #2196F3;
+            box-shadow: 0 2px 4px rgba(33, 150, 243, 0.2);
+        }
+
+        .single-solutions p>strong>a:hover {
+            background-color: #0b7dda;
+            transform: translateY(-1px);
+        }
+
+        .useful-links p>strong>a {
+            background-color: #f44336;
+            box-shadow: 0 2px 4px rgba(244, 67, 54, 0.2);
+        }
+
+        .useful-links p>strong>a:hover {
+            background-color: #d32f2f;
+            transform: translateY(-1px);
+        }
+
+        .yiyan p>strong>a {
+            background-color: #ff00b3;
+            box-shadow: 0 2px 4px rgba(82, 116, 190, 0.2);
+        }
+
+        .yiyan p>strong>a:hover {
+            background-color: #be0b0b;
+            transform: translateY(-1px);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .CXOI {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .CXOI p {
+                font-size: 20px;
+            }
+            
+            .CXOI a {
+                font-size: 16px;
+                padding: 6px 12px;
+            }
+        }
+.contest-table {
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+.contest-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.contest-table th,
+.contest-table td {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.contest-table thead tr {
+    background-color: #614390;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.contest-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.contest-table tbody tr:nth-of-type(even) {
+    background-color: #f8f9fa;
+}
+
+.contest-table tbody tr:last-of-type {
+    border-bottom: 2px solid #614390;
+}
+
+.contest-table tbody tr:hover {
+    background-color: #f1f3f5;
+}
+
+.contest-table a {
+    color: #2196F3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contest-table a:hover {
+    text-decoration: underline;
+}
+
+.status-tag {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.upcoming .status-tag {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.ongoing .status-tag {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.ended .status-tag {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .contest-table table {
+        font-size: 14px;
+    }
+    
+    .contest-table th,
+    .contest-table td {
+        padding: 8px 10px;
+    }
+    
+    .status-tag {
+        font-size: 12px;
+    }
+}
+    </style>
+</head>
+
+<body onclick="ChangeColor()">
+
+<div class="CXOI">
+<center>
+<p>CXOI Official</p>
+
+<hr><hr>
+
+<a href="https://self-adjusting-top-tree.github.io/CXOI/homepage.html">Home Page</a>
+<a href="https://self-adjusting-top-tree.github.io/CXOI/home.html">Contest List</a>
+<a href="https://self-adjusting-top-tree.github.io/CXOI/ranking.html">Ranking List</a>
+<a href="https://self-adjusting-top-tree.github.io/CXOI/contribution.html">Contribution List</a>
+</center>
+</div>
+
+<p></p>
+<p></p>
+<hr>
+<p></p>
+
+         CXOI 系列是一个主要由 <a href="https://www.luogu.com.cn/user/761125">Milthm</a>，<a href="https://www.luogu.com.cn/user/761137">Double_Light</a>，<a href="https://www.luogu.com.cn/user/378467">ttq012</a> 组织的邀请赛系列，偶尔也会邀请其他用户参与出题或改编模拟赛题目。目前，CXOI 已推出了多个不同系列的比赛，包括 cbc 系列（对标 AtCoder Beginner Contest，但通常难度略高）、crc 系列（对标 AtCoder Regular Contest (Div. 2)）以及 CXOI Round X 等形式的邀请赛。
+	
+    <div class="image">
+        <img src="https://www.creation-hy.com/api/ai-art-works/1/7003973e-9e93-11ef-9091-e4c7677cb1da.webp"
+            alt="AI-generated artwork">
+    </div>
+
+    <div class="footer" id="current-time">
+
+    </div>
+
+    <div class="yiyan">
+        <p id="hitokoto_text">
+            <font face=苍耳云黑>:D 获取今日一言中...</font>
+        </p>
+        <p id="hitokoto_from">
+            <font face=苍耳云黑>from</font>
+        </p>
+    </div>
+
+    <script>
+        fetch('https://v1.hitokoto.cn')
+            .then(response => response.json())
+            .then(data => {
+                hitokoto_text.innerText = data.hitokoto
+                hitokoto_from.innerText = data.from
+            })
+            .catch(console.error)
+    </script>
+
+    <script>
+        const colors = [
+            '#e8f5e9',
+            '#fff9c4',
+            '#ffebee',
+            '#e3f2fd',
+            '#f5f5f5'
+        ];
+        let c_idx = 0;
+        function ChangeColor() {
+            c_idx = (c_idx + 1) % colors.length;
+            document.body.style.backgroundColor = colors[c_idx];
+        }
+        function Updtime() {
+            const now = new Date();
+            const tme = document.getElementById('current-time');
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const fmt = `Current Time: ${year}年${month}月${day}日 ${hours}:${minutes}:${seconds}`;
+            tme.textContent = fmt;
+        }
+        Updtime();
+        setInterval(Updtime, 1000);
+        document.body.style.backgroundColor = colors[c_idx];
+    </script>
+
+</body>
+
+</html>
