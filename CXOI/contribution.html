@@ -78,7 +78,7 @@
         white-space: nowrap;
     }
 
-    ..CXOI {
+    .CXOI {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -301,6 +301,49 @@
         font-size: 12px;
     }
 }
+
+        .intro-container {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 18px;
+            padding: 30px 35px;
+            margin: 25px 0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.3s ease;
+            line-height: 1.7;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .intro-container:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
+            transform: translateY(-5px);
+        }
+        
+        .intro-container p {
+            margin: 0;
+            color: #333;
+            font-size: 17px;
+            text-align: justify;
+            font-family: Maple Mono, Consolas, Arial, sans-serif;
+        }
+        
+        .intro-container a {
+            color: #1e8449;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        
+        .intro-container a:hover {
+            color: #145b32;
+            text-decoration: underline;
+            background-color: rgba(30, 132, 73, 0.1);
+        }
     </style>
 </head>
 
@@ -324,8 +367,10 @@
 <hr>
 <p></p>
 
-         CXOI 系列是一个主要由 <a href="https://www.luogu.com.cn/user/761125">Milthm</a>，<a href="https://www.luogu.com.cn/user/761137">Double_Light</a>，<a href="https://www.luogu.com.cn/user/378467">ttq012</a> 组织的邀请赛系列，偶尔也会邀请其他用户参与出题或改编模拟赛题目。目前，CXOI 已推出了多个不同系列的比赛，包括 cbc 系列（对标 AtCoder Beginner Contest，但通常难度略高）、crc 系列（对标 AtCoder Regular Contest (Div. 2)）以及 CXOI Round X 等形式的邀请赛。
-	
+<!-- 添加半透明悬浮方形圆角框 -->
+<div class="intro-container">
+    CXOI 系列是一个主要由 <a href="https://www.luogu.com.cn/user/761125">Milthm</a>，<a href="https://www.luogu.com.cn/user/761137">Double_Light</a>，<a href="https://www.luogu.com.cn/user/378467">ttq012</a> 组织的邀请赛系列，偶尔也会邀请其他用户参与出题或改编模拟赛题目。目前，CXOI 已推出了多个不同系列的比赛，包括 cbc 系列（对标 AtCoder Beginner Contest，但通常难度略高）、crc 系列（对标 AtCoder Regular Contest (Div. 2)）以及 CXOI Round X 等形式的邀请赛。
+</div>
     <div class="image">
         <img src="https://www.creation-hy.com/api/ai-art-works/1/7003973e-9e93-11ef-9091-e4c7677cb1da.webp"
             alt="AI-generated artwork">
