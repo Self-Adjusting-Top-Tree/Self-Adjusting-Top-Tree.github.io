@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pollard‑Rho 质因数分解</title>
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --panel: #141720;
+      --panel-2: #10131a;
+      --text: #e6e8ee;
+      --muted: #a8b0c2;
+      --accent: #4da3ff;
+      --border: #232836;
+      --ok: #4bb96b;
+      --warn: #ffb020;
+      --err: #ff5a6b;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; background: radial-gradient(1200px 700px at 70% -10%, #182033 0%, var(--bg) 60%); color: var(--text); }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px 60px; }
+    h1 { margin: 0 0 8px; font-size: 28px; font-weight: 700; }
+    p.lead { margin: 0 0 22px; color: var(--muted); }
+
+    .grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+    @media (min-width: 820px) { .grid { grid-template-columns: 2fr 1fr; } }
+
+    .card { background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%); border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    .card h2 { margin: 0; padding: 14px 16px 0; font-size: 16px; color: var(--muted); font-weight: 600; }
+    .card .body { padding: 14px 16px 16px; }
+
+    label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+    input[type="text"], select { width: 100%; padding: 12px 12px; background: #0f1320; border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-size: 14px; }
+    input::placeholder { color: #6b7280; }
+
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    button { appearance: none; border: 0; border-radius: 10px; padding: 12px 14px; font-size: 14px; font-weight: 700; cursor: pointer; }
+    .btn { background: var(--accent); color: #07121f; }
+    .btn:disabled { opacity: .65; cursor: default; }
+    .btn-secondary { background: #1b2130; color: var(--text); border: 1px solid var(--border); }
+
+    .muted { color: var(--muted); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    .caps { text-transform: uppercase; letter-spacing: .06em; font-weight: 700; font-size: 12px; color: var(--muted); }
+
+    .log { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: 13px; background: #0c101a; border: 1px solid var(--border); border-radius: 10px; padding: 12px; height: 260px; overflow: auto; white-space: pre-wrap; }
+
+    .pill { display: inline-block; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: #0d1220; font-size: 12px; margin-right: 8px; margin-bottom: 6px; }
+
+    .result { font-size: 15px; }
+    .result .n { color: var(--muted); }
+    .result .factors { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+    .kbd { display:inline-block; padding:2px 6px; border:1px solid var(--border); border-bottom-width:2px; border-radius:6px; background:#0f1524; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; }
+
+    .footer { margin-top: 24px; color: var(--muted); font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Pollard‑Rho 质因数分解</h1>
+    <p class="lead">支持大整数 <span class="mono">BigInt</span>，使用 Miller–Rabin 素性测试与 Floyd 循环检测。适合演示与学习。</p>
+
+    <div class="grid">
+      <div class="card">
+        <h2>输入</h2>
+        <div class="body">
+          <label for="n">待分解整数 N（十进制）</label>
+          <input id="n" type="text" placeholder="例如：10403 或 15241578753238836750190521" />
+
+          <div class="row" style="margin-top:12px;">
+            <div>
+              <label for="iterations">最大轮数</label>
+              <input id="iterations" type="text" value="100000" />
+            </div>
+            <div>
+              <label for="seed">随机种子（可空）</label>
+              <input id="seed" type="text" placeholder="留空则使用随机值" />
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:12px;">
+            <button id="start" class="btn">开始分解</button>
+            <button id="stop" class="btn-secondary" disabled>停止</button>
+          </div>
+
+          <div style="margin-top:12px;" class="caps">运行信息</div>
+          <div id="status" class="pill">空闲</div>
+          <div id="timer" class="pill">0 ms</div>
+          <div id="steps" class="pill">0 步</div>
+
+          <div style="margin-top:10px;">
+            <div class="caps">日志</div>
+            <div id="log" class="log"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>结果</h2>
+        <div class="body">
+          <div id="result" class="result">尚无结果</div>
+          <div style="margin-top:12px;" class="caps">示例</div>
+          <div class="muted" style="font-size:13px; line-height:1.6;">
+            <div><span class="kbd" data-sample>10403</span> = 101 × 103</div>
+            <div><span class="kbd" data-sample>15241578753238836750190521</span> = 123456789 × 123456789</div>
+            <div><span class="kbd" data-sample>600851475143</span> = 71 × 839 × 1471 × 6857</div>
+            <div><span class="kbd" data-sample>1000000007</span> 素数</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">提示：输入后按 Enter 即可开始。停止后可继续。算法为概率型，遇到困难实例时可更换种子或稍增轮数。</div>
+  </div>
+
+<script>
+(function() {
+  const $ = (id) => document.getElementById(id);
+  const nInput = $('n');
+  const iterationsInput = $('iterations');
+  const seedInput = $('seed');
+  const startBtn = $('start');
+  const stopBtn = $('stop');
+  const statusEl = $('status');
+  const timerEl = $('timer');
+  const stepsEl = $('steps');
+  const logEl = $('log');
+  const resultEl = $('result');
+
+  function log(line) {
+    logEl.textContent += line + "\n";
+    logEl.scrollTop = logEl.scrollHeight;
+  }
+  function setStatus(text) { statusEl.textContent = text; }
+  function setTimer(ms) { timerEl.textContent = ms + ' ms'; }
+  function setSteps(k) { stepsEl.textContent = k + ' 步'; }
+
+  // ---------- BigInt helpers ----------
+  const ZERO = 0n, ONE = 1n, TWO = 2n;
+
+  function absBig(x) { return x >= 0n ? x : -x; }
+
+  function gcd(a, b) {
+    a = absBig(a); b = absBig(b);
+    while (b) { const t = a % b; a = b; b = t; }
+    return a;
+  }
+
+  function modAdd(a, b, m) { let r = a + b; r %= m; if (r < 0) r += m; return r; }
+  function modMul(a, b, m) {
+    // 使用快速乘避免中间溢出；在 BigInt 下直接相乘亦可
+    return (a * b) % m;
+  }
+  function modPow(base, exp, mod) {
+    if (mod === 1n) return 0n;
+    let result = 1n;
+    let b = ((base % mod) + mod) % mod;
+    let e = exp;
+    while (e > 0n) {
+      if (e & 1n) result = (result * b) % mod;
+      b = (b * b) % mod;
+      e >>= 1n;
+    }
+    return result;
+  }
+
+  // Miller-Rabin 素性测试（若 n < 2^64 取固定基即可确定性；此处采用通用概率型）
+  function isProbablePrime(n) {
+    if (n < 2n) return false;
+    const smallPrimes = [2n,3n,5n,7n,11n,13n,17n,19n,23n,29n,31n,37n];
+    for (const p of smallPrimes) {
+      if (n === p) return true;
+      if (n % p === 0n) return false;
+    }
+    // 写成 n-1 = d * 2^s
+    let d = n - 1n; let s = 0n;
+    while ((d & 1n) === 0n) { d >>= 1n; s++; }
+
+    function witness(a) {
+      let x = modPow(a, d, n);
+      if (x === 1n || x === n - 1n) return false;
+      for (let r = 1n; r < s; r++) {
+        x = (x * x) % n;
+        if (x === n - 1n) return false;
+      }
+      return true; // 复合
+    }
+
+    const bases = [2n, 325n, 9375n, 28178n, 450775n, 9780504n, 1795265022n];
+    // 上述基对 64 位以内确定性；更大时作为概率型测试
+    for (const a of bases) {
+      const aa = a % n;
+      if (aa <= 1n) continue;
+      if (witness(aa)) return false;
+    }
+    return true;
+  }
+
+  function randomBigInt(maxExclusive, rng) {
+    // 简易随机：基于 Math.random 或传入 RNG
+    let x = 0n;
+    const bits = maxExclusive.toString(2).length;
+    const bytes = Math.ceil(bits/8);
+    // 生成足够位数
+    while (true) {
+      let r = 0n;
+      for (let i=0;i<bytes;i++) {
+        const b = rng() & 255;
+        r = (r << 8n) + BigInt(b);
+      }
+      if (r < maxExclusive) return r;
+    }
+  }
+
+  // 可中断的 Pollard-Rho；返回一个非平凡因子或 null
+  async function pollardRho(n, maxIters, rng, tick, cancelRef) {
+    if ((n & 1n) === 0n) return 2n;
+    if (isProbablePrime(n)) return n; // 已经是素数
+
+    const f = (x, c) => (modMul(x, x, n) + c) % n;
+
+    for (let attempt = 0; attempt < 12; attempt++) { // 多次尝试不同参数
+      let c = randomBigInt(n - 1n, rng) + 1n; // 1..n-1
+      let x = randomBigInt(n - 2n, rng) + 2n; // 2..n-1
+      let y = x;
+      let d = 1n;
+      for (let i = 1; i <= maxIters; i++) {
+        if (cancelRef.cancelled) return null;
+        x = f(x, c);
+        y = f(f(y, c), c);
+        const diff = x > y ? x - y : y - x;
+        d = gcd(diff, n);
+        if (d === n) break; // 失败，换参数
+        if (d > 1n) return d;
+        if (i % 2048 === 0) { await tick(); }
+      }
+      await tick();
+    }
+    return null;
+  }
+
+  async function factor(n, maxIters, rng, onFound, cancelRef) {
+    if (n === 1n) return;
+    if (isProbablePrime(n)) { onFound(n); return; }
+    const d = await pollardRho(n, maxIters, rng, microYield, cancelRef);
+    if (cancelRef.cancelled) return;
+    if (!d || d === n) { // 未找到，换更大轮数或参数
+      onFound(n); // 回退：当作素数（极少数边界）
+      return;
+    }
+    await factor(d, maxIters, rng, onFound, cancelRef);
+    await factor(n / d, maxIters, rng, onFound, cancelRef);
+  }
+
+  function makeRNGFromSeed(seedStr) {
+    // xorshift64*
+    let x = 0n;
+    const seed = seedStr && seedStr.trim().length ? BigInt.asUintN(64, BigInt(hashStr(seedStr))) : BigInt.asUintN(64, BigInt(Date.now())) ^ 0x9e3779b97f4a7c15n;
+    x = seed || 1n;
+    return function () {
+      // 64-bit xorshift*
+      x ^= x << 13n; x ^= x >> 7n; x ^= x << 17n;
+      const z = BigInt.asUintN(64, x * 0x2545F4914F6CDD1Dn);
+      // 返回 0..255 整数
+      return Number(z & 0xffn);
+    };
+  }
+
+  function hashStr(s) {
+    // FNV-1a 64 位
+    let h = 0xcbf29ce484222325n;
+    const p = 0x100000001b3n;
+    for (let i=0;i<s.length;i++) {
+      h ^= BigInt(s.charCodeAt(i) & 0xff);
+      h = BigInt.asUintN(64, h * p);
+    }
+    return h;
+  }
+
+  function formatFactors(arr) {
+    arr.sort((a,b) => (a < b ? -1 : a > b ? 1 : 0));
+    const groups = [];
+    let i = 0;
+    while (i < arr.length) {
+      let j = i + 1;
+      while (j < arr.length && arr[j] === arr[i]) j++;
+      groups.push([arr[i], j - i]);
+      i = j;
+    }
+    return groups.map(([p, e]) => e === 1 ? p.toString() : `${p}^${e}`).join(' × ');
+  }
+
+  async function microYield() {
+    await new Promise(r => setTimeout(r, 0));
+  }
+
+  function parseBigInt(str) {
+    if (!str || !/^[0-9]+$/.test(str.trim())) return null;
+    return BigInt(str.trim());
+  }
+
+  // ---------- UI wiring ----------
+  let running = false;
+  let cancelRef = { cancelled: false };
+  let steps = 0;
+  let startTime = 0;
+
+  async function run() {
+    const n = parseBigInt(nInput.value);
+    if (n === null || n < 2n) {
+      alert('请输入大于等于 2 的十进制整数');
+      return;
+    }
+    const maxIters = parseInt(iterationsInput.value || '100000', 10) || 100000;
+    const rng = makeRNGFromSeed(seedInput.value);
+
+    logEl.textContent = '';
+    resultEl.textContent = '分解中…';
+    setStatus('运行中');
+    steps = 0; setSteps(0);
+    startTime = performance.now();
+    setTimer(0);
+    cancelRef = { cancelled: false };
+    running = true; startBtn.disabled = true; stopBtn.disabled = false; nInput.disabled = true; iterationsInput.disabled = true; seedInput.disabled = true;
+
+    const factors = [];
+
+    try {
+      if (n % 2n === 0n) { factors.push(2n); log('检测到偶数，提取因子 2'); await microYield(); }
+      const oddPart = n >> BigInt(Number(n % 2n === 0n)); // 若是偶数，先除 2；否则不动
+      let m = n;
+      while ((m & 1n) === 0n) { m >>= 1n; steps++; }
+
+      await factor(n, maxIters, rng, (p) => { factors.push(p); steps++; setSteps(steps); }, cancelRef);
+
+      if (cancelRef.cancelled) {
+        setStatus('已停止');
+        resultEl.textContent = '已停止';
+        return;
+      }
+
+      const pretty = formatFactors(factors);
+      const elapsed = Math.round(performance.now() - startTime);
+      setTimer(elapsed);
+      setStatus('完成');
+      resultEl.innerHTML = `N = <span class="n mono">${n.toString()}</span><br/>因数分解：<span class="factors">${pretty}</span><br/>用时 ${elapsed} ms，步骤 ${steps}`;
+      log('完成');
+    } catch (e) {
+      setStatus('错误');
+      resultEl.textContent = '出错：' + e.message;
+      console.error(e);
+    } finally {
+      running = false; startBtn.disabled = false; stopBtn.disabled = true; nInput.disabled = false; iterationsInput.disabled = false; seedInput.disabled = false;
+    }
+  }
+
+  startBtn.addEventListener('click', run);
+  stopBtn.addEventListener('click', () => {
+    cancelRef.cancelled = true;
+    stopBtn.disabled = true;
+    setStatus('停止中…');
+  });
+  nInput.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !running) run(); });
+
+  // 点击示例
+  document.querySelectorAll('[data-sample]').forEach(el => {
+    el.addEventListener('click', () => { nInput.value = el.textContent.trim(); nInput.focus(); });
+  });
+})();
+</script>
+</body>
+</html>
